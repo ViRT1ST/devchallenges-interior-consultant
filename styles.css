@@ -98,7 +98,7 @@ header > .wrapper {
   outline: 0;
   padding: 0;
   padding-top: 2rem;
-  line-height: 0.1;
+  line-height: 1;
 }
 
 .menu-icon::before {
@@ -107,7 +107,7 @@ header > .wrapper {
   font-weight: 400;
   content: "\e5d2";
   font-size: 4rem;
-  line-height: 0.1;
+  line-height: 1;
   top: 0rem;
   left: 0rem;
 }
