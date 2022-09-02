@@ -3,7 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 :root {
-	--content-max-size: 144rem;
+  --content-max-size: 144rem;
+  --link-hover-color: #d7d3dc;
 }
 
 * {
@@ -19,14 +20,19 @@ html {
   font-size: 400;
 }
 
-.flex-layout {
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.body__layout {
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.wrapper {
+.utility__page-width-container {
   display: flex;
   max-width: var(--content-max-size);
   margin: 0 auto;
@@ -34,35 +40,30 @@ html {
   padding: 2rem 1rem;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* =============================================================== */
 /* Custom scroolbar
 /* =============================================================== */
 
-.scrollbar::-webkit-scrollbar {
-  width: 16px;
+.body__custom-scroll::-webkit-scrollbar {
+  width: 10px;
 }
 
-.scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 0;
+.body__custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 3;
 }
 
-.scrollbar::-webkit-scrollbar-thumb,
-.scrollbar::-webkit-scrollbar-track,
-.scrollbar::-webkit-scrollbar-track:hover, 
-.scrollbar::-webkit-scrollbar-track:active {
+.body__custom-scroll::-webkit-scrollbar-thumb,
+.body__custom-scroll::-webkit-scrollbar-track,
+.body__custom-scroll::-webkit-scrollbar-track:hover, 
+.body__custom-scroll::-webkit-scrollbar-track:active {
   background-color: #5e6366;
 }
 
-.scrollbar::-webkit-scrollbar-thumb:hover {
+.body__custom-scroll::-webkit-scrollbar-thumb:hover {
   background-color: #797e81;
 }
 
-.scrollbar::-webkit-scrollbar-thumb:active {
+.body__custom-scroll::-webkit-scrollbar-thumb:active {
   background-color: #909497;
 }
 
@@ -70,17 +71,17 @@ a {
 /* Header
 /* =============================================================== */
 
-header {
+.header {
   height: 6.1rem;
 }
 
-header > .wrapper {
+.header > .utility__page-width-container {
   height: 100%;
   align-items: center;
   padding: 0.8rem 1rem;
 }
 
-.link-main {
+.header__logo-link {
   font-family: 'Crimson Pro';
   font-weight: 200;
   font-size: 1.4rem; 
@@ -89,30 +90,54 @@ header > .wrapper {
   padding: 0.4rem 0.5rem 0.5rem;
 }
 
-.menu-button {
-  display: inline-block;
+.header__logo-link:hover {
+  color: var(--link-hover-color);
+  border: 2px solid var(--link-hover-color);
+}
+
+.header__menu-btn {
   background-color: transparent;
   cursor: pointer;
   color: #fff;
-  border: 0;
-  outline: 0;
   padding: 0;
-  /* padding-top: 2rem; */
-  /* line-height: 1; */
-}
-
-.menu-icon::before {
-  display: block;
+  outline: 0;
+  border: 0;
   font-family: 'Material Symbols Rounded';
   font-weight: 400;
-  content: "\e5d2";
   font-size: 4rem;
-  /* line-height: 1; */
+  line-height: 1;
+}
+
+.header__menu-btn--open {
+  display: inline-block;
+}
+
+.header__menu-btn--open::before {
+  content: "\e5d2";
   top: 0rem;
   left: 0rem;
 }
 
-.menu-popup-overlay {
+.header__menu-btn--open:hover {
+  color: var(--link-hover-color);
+}
+
+.header__menu-btn--close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.header__menu-btn--close::before {
+  display: block;
+  content: "\e5cd";
+}
+
+.header__menu-btn--close:hover {
+  color: var(--link-hover-color);
+}
+
+.header__menu-overlay {
   display: none;
   position: absolute;
   min-width: 100%;
@@ -125,17 +150,16 @@ header > .wrapper {
   overflow: hidden;
 }
 
-.menu-popup-items {
+.header__menu-overlay-items {
   position: relative;
   height: 100vh;
-  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.mobile-item {
+.header__menu-overlay-item {
   display: block;
   font-size: 1.8rem;
   margin-bottom: 3rem;
@@ -144,37 +168,17 @@ header > .wrapper {
   font-weight: 500;
 }
 
-.mobile-item:hover {
-  border-bottom: 0.2rem #fff solid;
+.header__menu-overlay-item:hover {
+  color: var(--link-hover-color);
+  border-bottom: 0.2rem solid var(--link-hover-color);
   font-weight: 700;
 }
 
-.menu-close {
-  position: absolute;
-  background-color: transparent;
-  cursor: pointer;
-  color: #fff;
-  border: 0;
-  outline: 0;
-  padding: 0;
-  top: 1rem;
-  right: 1rem;
-}
-
-.close-icon::before {
-  display: block;
-  font-family: 'Material Symbols Rounded';
-  font-weight: 400;
-  content: "\e5cd";
-  font-size: 4rem;
-  line-height: 1;
-}
-
-nav {
+.header__menu-inline-items {
   display: none;
 }
 
-.link-menu {
+.header__menu-inline-item {
   display: inline-block;
   font-size: 1.8rem;
   font-weight: 500;
@@ -184,12 +188,13 @@ nav {
   margin-left: 8rem;
 }
 
-.link-menu:hover {
+.header__menu-inline-item:hover {
   font-weight: 700;
-  border-bottom: 0.2rem #fff solid;
+  border-bottom: 0.2rem solid var(--link-hover-color);
+  color: var(--link-hover-color);
 }
 
-.link-menu::before {
+.header__menu-inline-item::before {
   display: block;
   content: attr(title);
   font-weight: bold;
@@ -202,63 +207,54 @@ nav {
 /* Main
 /* =============================================================== */
 
-main {
-  background-color: rgb(60, 57, 62);
+.main {
+  background-color: #3c393e;
   flex-grow: 1;
   display: flex;
   align-items: center;
 }
 
-main > .wrapper {
+.main > .utility__page-width-container {
   flex-direction: column;
 }
 
-.main-information h1 {
+.main-information__title {
   font-family: 'Lora', sans-serif;
   font-weight: 500;
   font-size: 3.6rem;
   margin-bottom: 2.5rem;
 }
 
-.main-information p {
+.main-information__text {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
   margin-bottom: 2rem;
 }
 
-.main-information a {
+.main-information__link-wrapper {
   display: block;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
   margin-bottom: 3.5rem;
-}
-
-.arrow-link-wrapper {
   display: inline-block;
   position: relative;
   cursor: pointer;
-  width: 15rem;
 }
 
-.arrow-link-wrapper:hover {
-  color: #fff;
-  /* transform-style: preserve-3d; */
-  /* transition: transform 2s; */
-  /* transition: -webkit-transform 2s; */
-  /* -webkit-transform: rotateY(360deg); */
-  /* transform: rotateY(360deg); */
+.main-information__link-wrapper:hover {
+  color: var(--link-hover-color);
 }
 
-.arrow::before {
+.main-information__link-text::after {
   display: block;
   position: absolute;
   font-family: 'Material Symbols Rounded';
   font-weight: 700;
   content: "\e941";
-  top: 0rem;
-  font-size: 1.6rem;
+  top: 0;
+  font-size: 1.61rem;
   left: 8.6rem;
 }
 
@@ -267,12 +263,12 @@ main > .wrapper {
   flex-direction: column;
 }
 
-.interior {
+.main-photo__image {
   width: 100%;
   max-width: 99rem;
 }
 
-.designer-wrapper {
+.main-photo__designer-wrapper {
   width: 80%;
   max-width: 30rem;
   background-color: #363536;
@@ -284,34 +280,34 @@ main > .wrapper {
   box-shadow: 0 3.2px 7.2px 0 rgb(0 0 0 / 13%), 0 0.6px 1.8px 0 rgb(0 0 0 / 11%);
 }
 
-.designer {
+.main-photo__designer-info {
   display: flex;
   align-items: center;
 }
 
-.designer-photo {
+.main-photo__designer-photo {
   border-radius: 50%;
   width: 4rem;
 }
 
-.designer-name-and-role {
+.main-photo__designer-name-and-role {
   padding-left: 1.5rem;
 }
 
-.designer-name {
+.main-photo__designer-name {
   display: block;
   font-size: 1.2rem;
   font-size: 500;
 }
 
-.designer-role {
+.main-photo__designer-role {
   display: block;
   color: #828282;
   font-size: 1rem;
   font-size: 500;
 }
 
-.description {
+.main-photo__description {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   max-width: 21rem;
@@ -324,17 +320,18 @@ main > .wrapper {
 /* Footer
 /* =============================================================== */
 
-footer {
+.footer {
+  flex-grow: 0;
   height: 6.1rem;
 }
 
-footer > .wrapper {
+.footer > .utility__page-width-container {
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-footer p {
+.footer__text {
   text-align: center;
   color: #A9A9A9;
   font-family: 'Montserrat';
@@ -342,12 +339,12 @@ footer p {
   font-size: 1.2rem;
 }
 
-footer p a {
+.footer__link {
   color: inherit;
   font-family: inherit;
 }
 
-footer p a:hover {
+.footer__link:hover {
   text-decoration: underline;
 }
 
@@ -357,28 +354,28 @@ footer p a:hover {
 
 @media (min-width: 768px) {
 
-  .menu-button {
+  .header__menu-btn--open {
     display: none;
   }
 
-  nav {
+  .header__menu-inline-items {
     display: inline-block;
   }
 
-  .wrapper {
+  .utility__page-width-container {
     padding: 2rem 2rem;
   }
 
-  header > .wrapper {
+  .header > .utility__page-width-container {
     align-items: center;
     padding: 0.8rem 2rem;
   }
 
-  main {
+  .main {
     display: flex;
   }
 
-  main > .wrapper {
+  .main > .utility__page-width-container {
     width: 100%;
   }
 
@@ -387,9 +384,21 @@ footer p a:hover {
     min-width: 40%;
   }
 
-  .arrow::before {
-    font-size: 1.6rem;
-    left: 8.7rem;
+  .main-information__title {
+    font-size: 4.8rem;
+  }
+  
+  .main-information__text {
+    font-size: 2rem;
+  }
+  
+  .main-information__link-wrapper {
+    font-size: 1.5rem;
+  }
+
+  .main-information__link-text::after {
+    font-size: 1.7rem;
+    left: 9.4rem;
   }
 
   .main-photo {
@@ -398,24 +407,7 @@ footer p a:hover {
     min-width: 60%;
   }
 
-  .main-information h1 {
-    font-size: 4.8rem;
-  }
-  
-  .main-information p {
-    font-size: 2rem;
-  }
-  
-  .main-information a {
-    font-size: 1.5rem;
-  }
-
-  .arrow::before {
-    font-size: 1.7rem;
-    left: 9.5rem;
-  }
-
-  .designer-wrapper {
+  .main-photo__designer-wrapper {
     max-width: 41rem;
     padding: 2rem;
     padding-left: 2.5rem;
@@ -423,19 +415,19 @@ footer p a:hover {
     margin-top: -7.8rem;
   }
 
-  .designer-photo {
+  .main-photo__designer-photo {
     width: 5rem;
   }
 
-  .designer-name {
+  .main-photo__designer-name {
     font-size: 1.4rem;
   }
   
-  .designer-role {
+  .main-photo__designer-role {
     font-size: 1.2rem;
   }
   
-  .description {
+  .main-photo__description {
     max-width: 28rem;
     font-size: 2.4rem;
   }
@@ -444,7 +436,7 @@ footer p a:hover {
 
 @media (min-width: 1000px) {
 
-  main > .wrapper {
+  .main > .utility__page-width-container {
     flex-direction: row;
   }
 
@@ -461,21 +453,21 @@ footer p a:hover {
 
 @media (min-width: 1280px) {
 
-  .main-information h1 {
+  .main-information__title {
     font-size: 6.1rem;
   }
   
-  .main-information p {
+  .main-information__text {
     font-size: 2.4rem;
   }
   
-  .main-information a {
+  .main-information__link-wrapper {
     font-size: 1.8rem;
   }
 
-  .arrow::before {
+  .main-information__link-text::after {
     font-size: 2rem;
-    left: 11.5rem;
+    left: 11.4rem;
   }
 
 }
