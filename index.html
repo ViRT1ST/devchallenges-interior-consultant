@@ -12,96 +12,86 @@
   <title>devChallenges.io - Interior Consultant</title>
 </head>
 
-<body class="scrollbar">
-    <div class="flex-layout">
+<body class="body__custom-scroll body__layout">
 
-  
-      <header>
-        <div class="wrapper">
-          <div class="header-left">
-            <a class="link-main" href="#">This Interior</a>
-          </div>
-          <div class="header-right">
-            <button class="menu-button">
-              <span class="menu-icon"></span>
-            </button>
-            <div class="menu-popup-overlay">
-              <div class="menu-popup-items">
-                <a class="mobile-item" href="index.html">Home</a>
-                <a class="mobile-item" href="index.html">Collection</a>
-                <a class="mobile-item" href="index.html">About</a>
-                <a class="mobile-item" href="index.html">Contact</a>
-                <button class="menu-close">
-                  <span class="close-icon"></span>
-                </button>
-              </div>
-            </div>
-            <nav>
-              <a class="link-menu" title="Home" href="#">Home</a>
-              <a class="link-menu" title="Collection" href="#">Collection</a>
-              <a class="link-menu" title="About" href="#">About</a>
-              <a class="link-menu" title="Contact" href="#">Contact</a>
-            </nav>
-          </div>
+  <header class="header">
+    <div class="utility__page-width-container">
+
+      <div class="header__flex-item">
+        <a class="header__logo-link" href="#">This Interior</a>
+      </div>
+
+      <div class="header__flex-item">
+        <button class="header__menu-btn header__menu-btn--open"></button>
+        <div class="header__menu-overlay">
+          <nav class="header__menu-overlay-items">
+            <a class="header__menu-overlay-item" href="index.html">Home</a>
+            <a class="header__menu-overlay-item" href="index.html">Collection</a>
+            <a class="header__menu-overlay-item" href="index.html">About</a>
+            <a class="header__menu-overlay-item" href="index.html">Contact</a>
+          </nav>
+          <button class="header__menu-btn header__menu-btn--close"></button>
         </div>
-      </header>
-
-      <main>
-        <div class="wrapper">
-
-          <div class="main-information">
-            <h1>Modern interior</h1>
-            <p>
-              A full-Service residential &</br>
-              commercial interior design and</br>
-              staging company offering</br>
-              professional organizing &</br>
-              eco-services.
-            </p>
-            <a class="" href="#">
-              <div class="arrow-link-wrapper">
-                Read more
-                <span class="arrow"></span>
-              </div>
-            </a>
-          </div>
-
-          <div class="main-photo">
-            <div class="interior-wrapper">
-              <img class="interior" src="./img/photo1.png" alt="Interior">
-            </div>
-            <div class="designer-wrapper">
-              <div class="designer">
-                <img class="designer-photo" src="./img/photo2.png" alt="Aliza Webber">
-                <div class="designer-name-and-role">
-                  <span class="designer-name">Aliza Webber</span>
-                  <span class="designer-role">Interior designer</span>
-                </div>
-              </div>
-              <div class="description">
-                Designed in 2020 by Aliza Webber
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </main>
-
-      <footer>
-        <div class="wrapper">
-          <p>Created by <a href="https://github.com/ViRT1ST">ViRT1ST</a> @ devChallenges.io</p>
-        </div>
-      </footer>
-      
+        <nav class="header__menu-inline-items">
+          <a class="header__menu-inline-item" title="Home" href="#">Home</a>
+          <a class="header__menu-inline-item" title="Collection" href="#">Collection</a>
+          <a class="header__menu-inline-item" title="About" href="#">About</a>
+          <a class="header__menu-inline-item" title="Contact" href="#">Contact</a>
+        </nav>
+      </div>
     </div>
-  </div>
 
+  </header>
+
+  <main class="main">
+    <div class="utility__page-width-container">
+
+      <div class="main-information">
+        <h1 class="main-information__title">Modern interior</h1>
+        <p class="main-information__text">
+          A full-Service residential &</br>
+          commercial interior design and</br>
+          staging company offering</br>
+          professional organizing &</br>
+          eco-services.
+        </p>
+        <a class="main-information__link-wrapper" href="#">
+          <p class="main-information__link-text">Read more</p>
+        </a>
+      </div>
+
+      <div class="main-photo">
+        <img class="main-photo__image" src="./img/photo1.png" alt="Interior">
+   
+        <div class="main-photo__designer-wrapper">
+          <div class="main-photo__designer-info">
+            <img class="main-photo__designer-photo" src="./img/photo2.png" alt="Aliza Webber">
+            <div class="main-photo__designer-name-and-role">
+              <span class="main-photo__designer-name">Aliza Webber</span>
+              <span class="main-photo__designer-role">Interior designer</span>
+            </div>
+          </div>
+          <div class="main-photo__description">Designed in 2020 by Aliza Webber</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="utility__page-width-container">
+      <p class="footer__text">
+        Created by <a class="footer__link" href="https://github.com/ViRT1ST">ViRT1ST</a> @ devChallenges.io
+      </p>
+    </div>
+  </footer>
+    
   <script>
-    document.querySelector(".menu-button").addEventListener("click", () => {
-      document.querySelector(".menu-popup-overlay").style.display = "block";
+    document.querySelector(".header__menu-btn--open").addEventListener("click", () => {
+      document.querySelector(".header__menu-overlay").style.display = "block";
     });
-    document.querySelector(".menu-close").addEventListener("click", () => {
-      document.querySelector(".menu-popup-overlay").style.display = "none";
+    document.querySelector(".header__menu-btn--close").addEventListener("click", () => {
+      document.querySelector(".header__menu-overlay").style.display = "none";
     });
   </script>
   
