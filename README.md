@@ -36,6 +36,7 @@
 -   HTML
 -   CSS
 -   BEM
+-   SASS
 -   JS
 
 ## Features
