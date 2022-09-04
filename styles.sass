@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap')
+
+@import './normalize'
+
+/* =============================================================== */
+/* Variables and mixins
+/* =============================================================== */
+
+// maximum content width
+$content-max-size: 1440px
+
+// breakpoints
+$md: 768px
+$lg: 992px
+$xl: 1200px
+
+// colors
+$main-bg-color: #363536
+$link-hover-color: #d7d3dc
+
+%hovered-link
+  color: $link-hover-color
+
+%hovered-nav-link
+  color: $link-hover-color
+  border-bottom: $link-hover-color 2px solid
+  font-weight: 700
+
+@mixin media($_size)
+  @media (min-width: $_size)
+    @content
+
+/* =============================================================== */
+/* Common
+/* =============================================================== */
+
+html
+  background-color: $main-bg-color
+  color: #fff
+  font-family: 'Montserrat', sans-serif
+
+.body
+  &__layout
+    position: relative
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+
+  &__custom-scroll
+    &::-webkit-scrollbar
+      width: 10px
+
+    &::-webkit-scrollbar-thumb
+      border-radius: 3
+
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track:hover,
+    &::-webkit-scrollbar-track:active,
+      background-color: #5e6366
+
+    &::-webkit-scrollbar-thumb:hover
+      background-color: #797e81
+
+    &::-webkit-scrollbar-thumb:active
+      background-color: #909497
+
+.utility__page-width-container
+  display: flex
+  max-width: $content-max-size
+  margin: 0 auto
+  justify-content: space-between
+  padding: 2rem 1rem
+  @include media($md)
+    padding: 2rem 2rem
+    
+/* =============================================================== */
+/* Header
+/* =============================================================== */
+
+.header
+  flex-grow: 0
+  height: 6.1rem
+
+  & > .utility__page-width-container
+    height: 100%
+    align-items: center
+    padding: 0.8rem 1rem
+    @include media($md)
+      align-items: center
+      padding: 0.8rem 2rem
+
+  &__logo-link
+    font-family: 'Crimson Pro'
+    font-weight: 200
+    font-size: 1.4rem
+    text-transform: uppercase
+    border: 2px solid #fff
+    padding: 0.4rem 0.5rem 0.5rem
+    &:hover
+      @extend %hovered-link
+      border-color: $link-hover-color
+
+  &__menu-btn
+    background-color: transparent
+    cursor: pointer
+    color: #fff
+    padding: 0
+    outline: 0
+    border: 0
+    font-family: 'Material Symbols Rounded'
+    font-weight: 400
+    font-size: 4rem
+    line-height: 1
+    &:hover
+      @extend %hovered-link
+
+    &--open
+      display: inline-block
+      &::before
+        content: '\e5d2'
+        top: 0rem
+        left: 0rem
+      @include media($md)
+        display: none
+
+    &--close
+      position: absolute
+      top: 1rem
+      right: 1rem
+      &::before
+        display: block
+        content: '\e5cd'
+
+  &__menu-overlay
+    display: none
+    position: absolute
+    min-width: 100%
+    min-height: 100%
+    background-color: $main-bg-color
+    opacity: 0.95
+    top: 0
+    left: 0
+    z-index: 1
+    overflow: hidden
+
+  &__menu-overlay-items
+    position: relative
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+  &__menu-overlay-item
+    display: block
+    font-size: 1.8rem
+    margin-bottom: 3rem
+    padding-bottom: 0.5rem
+    border-bottom: 0.2rem transparent solid
+    font-weight: 500
+    &:hover
+      @extend %hovered-nav-link
+
+  &__menu-inline-items
+    display: none
+    @include media($md)
+      display: inline-block
+
+  &__menu-inline-item
+    display: inline-block
+    font-size: 1.8rem
+    font-weight: 500
+    text-align: center
+    border-top: 0.2rem transparent solid
+    border-bottom: 0.2rem transparent solid
+    margin-left: 8rem
+    &::before
+      display: block
+      content: attr(title)
+      font-weight: bold
+      height: 0
+      overflow: hidden
+      visibility: hidden
+    &:hover
+      @extend %hovered-nav-link
+
+/* =============================================================== */
+/* Main
+/* =============================================================== */
+
+.main 
+  background-color: #3c393e
+  flex-grow: 1
+  display: flex
+  align-items: center
+
+  & > .utility__page-width-container
+    flex-direction: column
+    @include media($md)
+      width: 100%
+    @include media($lg)
+      flex-direction: row
+
+.main-information
+  @include media($md)
+    align-self: flex-start
+    min-width: 40%
+  @include media($lg)
+    margin-top: -5rem
+    align-self: center
+
+  &__title
+    font-family: 'Lora', sans-serif
+    font-weight: 500
+    font-size: 3.6rem
+    margin-bottom: 2.5rem
+    @include media($md)
+      font-size: 4.7rem
+    @include media($xl)
+      font-size: 5.8rem
+
+  &__text
+    font-family: 'Montserrat', sans-serif
+    font-weight: 400
+    font-size: 1.4rem
+    margin-bottom: 2rem
+    @include media($md)
+      font-size: 2rem
+    @include media($xl)
+      font-size: 2.4rem
+
+  &__link-wrapper
+    display: block
+    font-family: 'Montserrat', sans-serif
+    font-weight: 700
+    font-size: 1.4rem
+    margin-bottom: 3.5rem
+    display: inline-block
+    position: relative
+    cursor: pointer
+    &:hover
+      @extend %hovered-link
+    @include media($md)  
+      font-size: 1.5rem
+    @include media($xl)
+      font-size: 1.8rem
+
+  &__link-text
+    &::after
+      display: block
+      position: absolute
+      font-family: 'Material Symbols Rounded'
+      font-weight: 700
+      content: "\e941"
+      top: 0
+      font-size: 1.61rem
+      left: 8.6rem
+      @include media($md)
+        font-size: 1.7rem
+        left: 9.4rem
+      @include media($xl)
+        font-size: 2rem
+        left: 11.4rem
+
+.main-photo 
+  display: flex
+  flex-direction: column
+  @include media($md)
+    align-self: flex-start
+    align-items: flex-end
+    min-width: 60%
+  @include media($lg)
+    align-self: center
+
+  &__image
+    width: 100%
+    max-width: 99rem
+
+  &__designer-wrapper
+    width: 80%
+    max-width: 30rem
+    background-color: $main-bg-color
+    padding: 1.5rem
+    padding-left: 2rem
+    align-self: end
+    margin-right: 1.5rem
+    margin-top: -5.5rem
+    box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, .13), 0 0.6px 1.8px 0 rgba(0, 0, 0, .11)
+    @include media($md)
+      max-width: 41rem
+      padding: 2rem
+      padding-left: 2.5rem
+      margin-right: 3.2rem
+      margin-top: -7.8rem
+
+  &__designer-info
+    display: flex
+    align-items: center
+
+  &__designer-photo
+    border-radius: 50%
+    width: 4rem
+    @include media($md)
+      width: 5rem
+  
+  &__designer-name-and-role
+    padding-left: 1.5rem
+
+  &__designer-name 
+    display: block
+    font-size: 1.2rem
+    font-weight: 500
+    @include media($md)
+      font-size: 1.4rem
+
+  &__designer-role
+    display: block
+    color: #828282
+    font-size: 1rem
+    font-weight: 500
+    @include media($md)
+      font-size: 1.2rem
+
+  &__description
+    padding-top: 1.5rem
+    padding-bottom: 1.5rem
+    max-width: 21rem
+    font-family: 'Lora', sans-serif
+    font-weight: 700
+    font-size: 1.8rem
+    @include media($md)
+      max-width: 28rem
+      font-size: 2.4rem
+
+/* =============================================================== */
+/* Footer
+/* =============================================================== */
+
+.footer
+  flex-grow: 0
+  height: 6.1rem
+
+  & > .utility__page-width-container
+    justify-content: center
+    align-items: center
+    height: 100%
+
+  &__text
+  text-align: center
+  color: #A9A9A9
+  font-family: 'Montserrat'
+  font-weight: 500
+  font-size: 1.2rem
+
+  &__link
+    color: inherit
+    font-family: inherit
+    &:hover
+      text-decoration: underline
