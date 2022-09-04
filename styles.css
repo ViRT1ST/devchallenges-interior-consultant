@@ -1,10 +1,143 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
-
-* {
+/* =============================================================== */
+/* CSS Reseting */
+/* =============================================================== */
+*,
+::before,
+::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+html {
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+     tab-size: 4;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+hr {
+  height: 0;
+  color: inherit;
+}
+
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+kbd,
+pre,
+code,
+samp {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+summary {
+  display: list-item;
+}
+
+* {
   margin: 0;
 }
 
@@ -21,15 +154,11 @@ a {
 /* =============================================================== */
 /* Variables and mixins */
 /* =============================================================== */
-
-.header__logo-link:hover,
-.header__menu-btn:hover,
-.main-information__link-wrapper:hover {
+.header__logo-link:hover, .header__menu-btn:hover, .main-information__link-wrapper:hover {
   color: #d7d3dc;
 }
 
-.header__menu-overlay-item:hover,
-.header__menu-inline-item:hover {
+.header__menu-overlay-item:hover, .header__menu-inline-item:hover {
   color: #d7d3dc;
   border-bottom: #d7d3dc 2px solid;
   font-weight: 700;
@@ -38,7 +167,6 @@ a {
 /* =============================================================== */
 /* Common */
 /* =============================================================== */
-
 html {
   background-color: #363536;
   color: #fff;
@@ -65,10 +193,7 @@ html {
   border-radius: 3;
 }
 
-.body__custom-scroll::-webkit-scrollbar-thumb,
-.body__custom-scroll::-webkit-scrollbar-track,
-.body__custom-scroll::-webkit-scrollbar-track:hover,
-.body__custom-scroll::-webkit-scrollbar-track:active {
+.body__custom-scroll::-webkit-scrollbar-thumb, .body__custom-scroll::-webkit-scrollbar-track, .body__custom-scroll::-webkit-scrollbar-track:hover, .body__custom-scroll::-webkit-scrollbar-track:active {
   background-color: #5e6366;
 }
 
@@ -101,7 +226,6 @@ html {
 /* =============================================================== */
 /* Header */
 /* =============================================================== */
-
 .header {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
@@ -251,7 +375,6 @@ html {
 /* =============================================================== */
 /* Main */
 /* =============================================================== */
-
 .main {
   background-color: #3c393e;
   -webkit-box-flex: 1;
@@ -517,17 +640,11 @@ html {
 /* =============================================================== */
 /* Footer */
 /* =============================================================== */
-
 .footer {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   height: 6.1rem;
-  text-align: center;
-  color: #A9A9A9;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  font-size: 1.2rem;
 }
 
 .footer > .utility__page-width-container {
@@ -540,6 +657,14 @@ html {
   height: 100%;
 }
 
+.footer__text {
+  text-align: center;
+  color: #A9A9A9;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 .footer__link {
   color: inherit;
   font-family: inherit;
@@ -548,5 +673,4 @@ html {
 .footer__link:hover {
   text-decoration: underline;
 }
-
 /*# sourceMappingURL=styles.css.map */
