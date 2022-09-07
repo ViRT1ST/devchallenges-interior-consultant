@@ -25,15 +25,16 @@
         <button class="header__menu-btn header__menu-btn--open"></button>
         <div class="header__menu-overlay">
           <nav class="header__menu-overlay-items">
-            <a class="header__menu-overlay-item" href="index.html">Home</a>
-            <a class="header__menu-overlay-item" href="index.html">Collection</a>
-            <a class="header__menu-overlay-item" href="index.html">About</a>
-            <a class="header__menu-overlay-item" href="index.html">Contact</a>
+            <a class="header__menu-overlay-item nav__active-item" href="#">Home</a>
+            <a class="header__menu-overlay-item" href="#">Collection</a>
+            <a class="header__menu-overlay-item" href="#">About</a>
+            <a class="header__menu-overlay-item" href="#">Contact</a>
           </nav>
           <button class="header__menu-btn header__menu-btn--close"></button>
         </div>
+        
         <nav class="header__menu-inline-items">
-          <a class="header__menu-inline-item" title="Home" href="#">Home</a>
+          <a class="header__menu-inline-item nav__active-item" title="Home" href="#">Home</a>
           <a class="header__menu-inline-item" title="Collection" href="#">Collection</a>
           <a class="header__menu-inline-item" title="About" href="#">About</a>
           <a class="header__menu-inline-item" title="Contact" href="#">Contact</a>
@@ -87,12 +88,45 @@
   </footer>
     
   <script>
-    document.querySelector(".header__menu-btn--open").addEventListener("click", () => {
-      document.querySelector(".header__menu-overlay").style.display = "block";
-    });
-    document.querySelector(".header__menu-btn--close").addEventListener("click", () => {
-      document.querySelector(".header__menu-overlay").style.display = "none";
-    });
+    const openMenuButton = document.querySelector(".header__menu-btn--open");
+    const hideMenuButton = document.querySelector(".header__menu-btn--close");
+    const inlineItems = document.querySelectorAll('.header__menu-inline-item')
+    const overlayItems = document.querySelectorAll('.header__menu-overlay-item')
+    const navLength = inlineItems.length;
+
+    function showMenu() {
+      document.querySelector(".header__menu-overlay").classList.add("header__menu-overlay--active");
+    }
+
+    function hideMenu() {
+      document.querySelector(".header__menu-overlay").classList.remove("header__menu-overlay--active");
+    }
+    
+    openMenuButton.onclick = showMenu
+    hideMenuButton.onclick = hideMenu
+
+    for (let i = 0; i < navLength; i++) {
+      inlineItems[i].onclick = (event) => {
+        setActiveItemInBothNavMenus(i, event)
+      }
+      overlayItems[i].onclick = (event) => {
+        setActiveItemInBothNavMenus(i, event)
+      }
+    }
+
+    function setActiveItemInBothNavMenus(index, event) {
+      for (let i = 0; i < navLength; i++) {
+        inlineItems[i].classList.remove("nav__active-item")
+        overlayItems[i].classList.remove("nav__active-item")
+      }
+      inlineItems[index].classList.add("nav__active-item")
+      overlayItems[index].classList.add("nav__active-item")
+
+      if (event.target.classList.contains("header__menu-overlay-item")) {
+        hideMenu()
+      }
+    }
+
   </script>
   
 </body>
